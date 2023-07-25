@@ -5,4 +5,4 @@
 def reverse_string(string):
     for i in string:
         string = i + string
-        return string
+    return string
