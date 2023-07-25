@@ -6,10 +6,10 @@ def validate_password(password):
     if len(password) < 8:
         return False
 
-    char_digit = False
-    char_lowercase = False
-    char_uppercase = False
-    
+    char_digit = ""
+    char_lowercase = ""
+    char_uppercase = ""
+
     for char in password:
         if char.isupper():
             char_uppercase = True
