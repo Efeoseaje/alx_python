@@ -1,3 +1,6 @@
+""" Defines a Square"""
+
+
 class Square:
     """ a class that defines a Square """
     
