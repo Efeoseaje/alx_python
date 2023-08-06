@@ -1,9 +1,6 @@
 """An empty class"""
 
 
-from collections.abc import Iterable
-
-
 class MetaGeometry(type):
     """ A class used to define the behaviour of class BaseGeometry"""
 
