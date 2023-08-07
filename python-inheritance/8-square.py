@@ -18,12 +18,13 @@ class Square(Rectangle):
         """
         self.__size = size  # stores the sides in a private attribute
         self.integer_validator("size", size)
-        """instantiation of the square with two attributes(width and height which are the same)"""
-        super().__init__(size, size)  
+        """instantiation of the square with two attributes
+        (width and height which are the same)"""
+        super().__init__(size, size)
 
     def area(self):
         """ Computes the area of the Square
         Returns:
             The area of the Square
         """
-        return super().area() # utilizes the area method from the rectangle
+        return super().area()  # utilizes the area method from the rectangle
