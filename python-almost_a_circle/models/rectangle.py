@@ -15,8 +15,9 @@ class Rectangle(Base):
             y(int): the y cordinate of the rectangle
             id(int): the identity of the rectangle.
         Raises:
-            TypeError: if width, height, x, y is not an int.
+            TypeError: if width, height is not an int.
             ValueError: if width, height is <= 0.
+            TypeError: if x, y is not an int.
             ValueError: if x, y is < 0.
         """
         self.width = width
