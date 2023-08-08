@@ -5,7 +5,6 @@ from models.base import Base
 
 class Rectangle(Base):
     """  A class that defines a rectangle and inherits from base class """
-
     def __init__(self, width, height, x=0, y=0, id=None):
         """ Instantiation of the Rectangle class
         Args:
@@ -14,6 +13,7 @@ class Rectangle(Base):
             x(int): the x cordinate of the rectangle
             y(int): the y cordinate of the rectangle
             id(int): the identity of the rectangle.
+
         Raises:
             TypeError: if width, height is not an int.
             ValueError: if width, height is <= 0.
@@ -34,7 +34,7 @@ class Rectangle(Base):
     @width.setter
     def width(self, value):
         """ Setting the right value for width of the rectangle"""
-        if (type(value) is not int):
+        if type(value) != int:
             raise TypeError("width must be an integer")
         
         if value <= 0:
