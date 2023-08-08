@@ -6,7 +6,7 @@ from models.base import Base
 
 class Rectangle(Base):
     """  A class that defines a rectangle and inherits from base class """
-    
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """ Instantiation of the Rectangle class
         Args:
@@ -26,27 +26,25 @@ class Rectangle(Base):
         self.y = y
         super().__init__(id)
 
-
     @property
     def width(self):
         """ Retrieve the width """
         return self.__width
-    
+
     @property
     def height(self):
         """ Retrieve the height """
         return self.__height
-    
+
     @property
     def x(self):
         """ Retrieve the x-cordinate """
         return self.__x
-    
+
     @property
     def y(self):
         """ Retrieve the y-cordinate """
         return self.__y
-    
 
     @width.setter
     def width(self, value):
