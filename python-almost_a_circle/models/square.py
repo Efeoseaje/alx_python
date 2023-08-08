@@ -82,10 +82,10 @@ class Square(Rectangle):
         # return super().display()
         for y in range(self.__y):
             print()
-        for i in range(self.__height):
+        for i in range(self.size):
             for x in range(self.__x):
                 print(" ", end="")
-            print('#' * self.__width)
+            print('#' * self.size)
 
     def __str__(self):
         """ Overides the string representation of the square """
