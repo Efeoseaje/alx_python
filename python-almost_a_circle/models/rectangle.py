@@ -30,22 +30,7 @@ class Rectangle(Base):
     def width(self):
         """ Retrieve the width """
         return self.__width
-
-    @property
-    def height(self):
-        """ Retrieve the height """
-        return self.__height
-
-    @property
-    def x(self):
-        """ Retrieve the x-cordinate """
-        return self.__x
-
-    @property
-    def y(self):
-        """ Retrieve the y-cordinate """
-        return self.__y
-
+    
     @width.setter
     def width(self, value):
         """ Setting the right value for width of the rectangle"""
@@ -55,6 +40,11 @@ class Rectangle(Base):
             raise ValueError("width must be > 0")
         self.__width = value
 
+    @property
+    def height(self):
+        """ Retrieve the height """
+        return self.__height
+    
     @height.setter
     def height(self, value):
         """ Setting the right value for height of the rectangle """
@@ -64,6 +54,11 @@ class Rectangle(Base):
             raise ValueError("height must be > 0")
         self.__height = value
 
+    @property
+    def x(self):
+        """ Retrieve the x-cordinate """
+        return self.__x
+    
     @x.setter
     def x(self, value):
         """ Setting the right value for x-cordinate """
@@ -72,6 +67,11 @@ class Rectangle(Base):
         if value <= 0:
             raise ValueError("x must be >= 0")
         self.__x = value
+
+    @property
+    def y(self):
+        """ Retrieve the y-cordinate """
+        return self.__y
 
     @y.setter
     def y(self, value):
