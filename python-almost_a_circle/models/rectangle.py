@@ -122,4 +122,4 @@ class Rectangle(Base):
                 self.x = arg
             elif arg == 4:
                 self.y = arg
-            a += 1
+            arg += 1
