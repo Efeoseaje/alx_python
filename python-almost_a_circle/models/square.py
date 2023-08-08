@@ -22,8 +22,7 @@ class Square(Rectangle):
         # self.size = size
         # self.x = x
         # self.y = y
-        super().__init__(id)
-        super().__init__(size, size, x, y)
+        super().__init__(size, size, x, y, id)
 
     @property
     def size(self):
@@ -90,38 +89,33 @@ class Square(Rectangle):
 
     def __str__(self):
         """ Overides the string representation of the square """
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
 
     def update(self, *args, **kwargs):
         """ Assigns arguments to each attribute
         Args:
             1st argument should be the id attribute
-            2nd argument should be the width attribute
-            3rd argument should be the height attribute
-            4th argument should be the x attribute
-            5th argument should be the y attribute
+            2nd argument should be the size attribute
+            3rd argument should be the x attribute
+            4th argument should be the y attribute
         """
         if args and len(args) != 0:
             for index, value in enumerate(args):
                 if index == 0:
                     self.id = value
                 elif index == 1:
-                    self.width = value
+                    self.size = value
                 elif index == 2:
-                    self.height = value
-                elif index == 3:
                     self.x = value
-                elif index == 4:
+                elif index == 3:
                     self.y = value
 
         elif kwargs and len(kwargs) != 0:
             for k, v in kwargs.items():
                 if k == 'id':
                     self.id = v
-                elif k == 'width':
-                    self.width = v
-                elif k == 'height':
-                    self.height = v
+                elif k == 'size':
+                    self.size = v
                 elif k == 'x':
                     self.x = v
                 elif k == 'y':
