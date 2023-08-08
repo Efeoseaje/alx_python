@@ -42,6 +42,11 @@ class Square(Rectangle):
         self.__width = value
         self.__height = value
 
+    @property
+    def x(self):
+        """ Retrieve the x-cordinate """
+        return self.__x
+    
     @x.setter
     def x(self, value):
         """ Setting the right value for x-cordinate """
