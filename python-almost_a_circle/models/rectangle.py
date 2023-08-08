@@ -50,7 +50,7 @@ class Rectangle(Base):
 
     @width.setter
     def width(self, value):
-        """ Setting the right value for width """
+        """ Setting the right value for width of the rectangle"""
         if (type(value) is not int):
             raise TypeError("width must be an integer")
         if value <= 0:
@@ -58,11 +58,24 @@ class Rectangle(Base):
 
     @height.setter
     def height(self, value):
-        """ Setting the right value for height """
+        """ Setting the right value for height of the rectangle """
         if (type(value) is not int):
             raise TypeError("height must be an integer")
         if value <= 0:
             raise ValueError("height must be > 0")
 
+    @x.setter
+    def x(self, value):
+        """ Setting the right value for x-cordinate """
+        if (type(value) is not int):
+            raise TypeError("x must be an integer")
+        if value <= 0:
+            raise ValueError("x must be >= 0")
 
-
+    @y.setter
+    def y(self, value):
+        """ Setting the right value for y-cordinate """
+        if (type(value) is not int):
+            raise TypeError("y must be an integer")
+        if value <= 0:
+            raise ValueError("y must be >= 0")
