@@ -42,6 +42,33 @@ class Square(Rectangle):
         self.__width = value
         self.__height = value
 
+    @x.setter
+    def x(self, value):
+        """ Setting the right value for x-cordinate """
+        if (type(value) is not int):
+            raise TypeError("x must be an integer")
+
+        if value < 0:
+            raise ValueError("x must be >= 0")
+
+        self.__x = value
+
+    @property
+    def y(self):
+        """ Retrieve the y-cordinate """
+        return self.__y
+
+    @y.setter
+    def y(self, value):
+        """ Setting the right value for y-cordinate """
+        if (type(value) is not int):
+            raise TypeError("y must be an integer")
+
+        if value < 0:
+            raise ValueError("y must be >= 0")
+
+        self.__y = value
+
     def area(self):
         """ Returns the area value of the square instance """
         return super().area()
