@@ -110,16 +110,14 @@ class Rectangle(Base):
 
     def update(self, *args):
         """ Assigns arguments to each attribute """
-        for arg in args:
-            if arg == 0:
-                self.__init__(self.width, self.height, self.x, self.y)
-                self.id = arg
-            elif arg == 1:
-                self.width = arg
-            elif arg == 2:
-                self.height = arg
-            elif arg == 3:
-                self.x = arg
-            elif arg == 4:
-                self.y = arg
-            arg += 1
+        for index, value in enumerate(args):
+        if index == 0:
+            self.id = value
+        elif index == 1:
+            self.width = value
+        elif index == 2:
+            self.height = value
+        elif index == 3:
+            self.x = value
+        elif index == 4:
+            self.y = value
