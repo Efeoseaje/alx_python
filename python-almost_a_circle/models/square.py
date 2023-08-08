@@ -19,9 +19,6 @@ class Square(Rectangle):
             TypeError: if x, y is not an int.
             ValueError: if x, y is < 0.
         """
-        # self.size = size
-        # self.x = x
-        # self.y = y
         super().__init__(size, size, x, y, id)
 
     @property
@@ -31,7 +28,7 @@ class Square(Rectangle):
 
     @size.setter
     def size(self, value):
-        """ Setting the right value for width of the square"""
+        """ Setting the right value for size of the square"""
         if (type(value) is not int):
             raise TypeError("width must be an integer")
 
@@ -39,7 +36,6 @@ class Square(Rectangle):
             raise ValueError("width must be > 0")
 
         self.size = value
-        # self.height = value
 
     @property
     def x(self):
@@ -79,7 +75,6 @@ class Square(Rectangle):
 
     def display(self):
         """ Prints the square to stdout with the character '#' """
-        # return super().display()
         for y in range(self.y):
             print()
         for i in range(self.width):
