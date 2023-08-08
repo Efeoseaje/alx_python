@@ -30,48 +30,48 @@ class Rectangle(Base):
     def width(self):
         """ Retrieve the width """
         return self.__width
-    
+
     @width.setter
     def width(self, value):
         """ Setting the right value for width of the rectangle"""
         if (type(value) is not int):
             raise TypeError("width must be an integer")
-        
+
         if value <= 0:
             raise ValueError("width must be > 0")
-        
+
         self.__width = value
 
     @property
     def height(self):
         """ Retrieve the height """
         return self.__height
-    
+
     @height.setter
     def height(self, value):
         """ Setting the right value for height of the rectangle """
         if (type(value) is not int):
             raise TypeError("height must be an integer")
-        
+
         if value <= 0:
             raise ValueError("height must be > 0")
-        
+
         self.__height = value
 
     @property
     def x(self):
         """ Retrieve the x-cordinate """
         return self.__x
-    
+
     @x.setter
     def x(self, value):
         """ Setting the right value for x-cordinate """
         if (type(value) is not int):
             raise TypeError("x must be an integer")
-        
+
         if value < 0:
             raise ValueError("x must be >= 0")
-        
+
         self.__x = value
 
     @property
@@ -84,10 +84,10 @@ class Rectangle(Base):
         """ Setting the right value for y-cordinate """
         if (type(value) is not int):
             raise TypeError("y must be an integer")
-        
+
         if value < 0:
             raise ValueError("y must be >= 0")
-        
+
         self.__y = value
 
     def area(self):
@@ -98,3 +98,7 @@ class Rectangle(Base):
         """ Prints the rectangle to stdout with the character '#' """
         for i in range(self.__height):
             print('#' * self.__width)
+
+    def __str__(self) -> str:
+        return f"[Rectangle] ({self.id}) {self.__x}/{self.__y} - \
+            {self.__width}/{self.__height}"
