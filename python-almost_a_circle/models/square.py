@@ -79,7 +79,7 @@ class Square(Rectangle):
 
     def display(self):
         """ Prints the square to stdout with the character '#' """
-        super().display()
+        Square.display()
         # for y in range(self.__y):
             # print()
         # for i in range(self.__height):
