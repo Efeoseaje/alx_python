@@ -89,7 +89,7 @@ class Square(Rectangle):
 
     def __str__(self):
         """ Overides the string representation of the square """
-        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.size}"
+        return f"[Square] ({self.id}) {self.x}/{self.y} - {self.width}"
 
     def update(self, *args, **kwargs):
         """ Assigns arguments to each attribute
