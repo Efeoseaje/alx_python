@@ -79,13 +79,13 @@ class Square(Rectangle):
 
     def display(self):
         """ Prints the square to stdout with the character '#' """
-        return super().display()
-        # for y in range(self.__y):
-            # print()
-        # for i in range(self.__height):
-            # for x in range(self.__x):
-                # print(" ", end="")
-            # print('#' * self.__width)
+        # return super().display()
+        for y in range(self.__y):
+            print()
+        for i in range(self.__height):
+            for x in range(self.__x):
+                print(" ", end="")
+            print('#' * self.__width)
 
     def __str__(self):
         """ Overides the string representation of the square """
