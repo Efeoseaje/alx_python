@@ -107,3 +107,19 @@ class Rectangle(Base):
         """ Overides the string representation of the rectangle """
         return f"[Rectangle] ({self.id}) {self.x}/{self.y} - \
 {self.width}/{self.height}"
+
+    def update(self, *args):
+        """ Assigns arguments to each attribute """
+        for arg in args:
+            if arg == 0:
+                self.__init__(self.width, self.height, self.x, self.y)
+                self.id = arg
+            elif arg == 1:
+                self.width = arg
+            elif arg == 2:
+                self.height = arg
+            elif arg == 3:
+                self.x = arg
+            elif arg == 4:
+                self.y = arg
+            a += 1
