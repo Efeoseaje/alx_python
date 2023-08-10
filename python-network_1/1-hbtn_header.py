@@ -19,24 +19,29 @@ displays the value of the variable X-Request-Id
 import requests
 import sys
 
+import requests
+import sys
+
 def main():
     if len(sys.argv) != 2:
         print("Usage: python script.py <URL>")
         return
 
     url = sys.argv[1]
-    
+
     try:
         response = requests.get(url)
-        if 'X-Request-Id' in response.headers:
-            x_request_id = response.headers['X-Request-Id']
-            print(f"{x_request_id}")
+        if response.status_code == 200:
+            if 'X-Request-Id' in response.headers:
+                x_request_id = response.headers['X-Request-Id']
+                print(f"X-Request-Id: {x_request_id}")
+            else:
+                print("X-Request-Id header not found in the response.")
         else:
-            print("X-Request-Id header not found in the response.")
+            print(f"HTTP error: {response.status_code}")
     except requests.exceptions.RequestException as e:
         print(f"Error: {e}")
-    except requests.exceptions.HTTPError as e:
-        print(f"HTTP error: {e}")
 
 if __name__ == "__main__":
     main()
+
