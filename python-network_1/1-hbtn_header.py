@@ -15,24 +15,14 @@ displays the value of the variable X-Request-Id
         # print("{}".format(x_request_id))
     # else:
         # print("X-Request-Id header not found in the response.")
-import requests
+
 import sys
+import urllib.request
+
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print("Usage: python script_name.py <URL>")
-        sys.exit(1)
-
     url = sys.argv[1]
-    
-    try:
-        response = requests.get(url)
-        response.raise_for_status()  # Raise an exception for HTTP errors (4xx or 5xx)
-        
-        x_request_id = response.headers.get('X-Request-Id')
-        if x_request_id:
-            print("{}".format(x_request_id))
-        else:
-            print("X-Request-Id header not found in the response.")
-    except requests.exceptions.RequestException as e:
-        print("An error occurred while making the request:", e)
+
+    request = urllib.request.Request(url)
+    with urllib.request.urlopen(request) as response:
+        print(dict(response.headers).get("X-Request-Id"))
