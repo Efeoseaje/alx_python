@@ -16,13 +16,25 @@ displays the value of the variable X-Request-Id
     # else:
         # print("X-Request-Id header not found in the response.")
 
+import requests
 import sys
-import urllib.request
 
+def main():
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <URL>")
+        return
+
+    url = sys.argv[1]
+    
+    try:
+        response = requests.get(url)
+        if 'X-Request-Id' in response.headers:
+            x_request_id = response.headers['X-Request-Id']
+            print(f"X-Request-Id value: {x_request_id}")
+        else:
+            print("X-Request-Id header not found in the response.")
+    except requests.exceptions.RequestException as e:
+        print(f"Error: {e}")
 
 if __name__ == "__main__":
-    url = sys.argv[1]
-
-    request = urllib.request.Request(url)
-    with urllib.request.urlopen(request) as response:
-        print(dict(response.headers).get("X-Request-Id"))
+    main()
