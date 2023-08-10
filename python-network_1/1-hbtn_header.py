@@ -30,7 +30,7 @@ def main():
         response = requests.get(url)
         if 'X-Request-Id' in response.headers:
             x_request_id = response.headers['X-Request-Id']
-            print(f"X-Request-Id value: {x_request_id}")
+            print(f"{x_request_id}")
         else:
             print("X-Request-Id header not found in the response.")
     except requests.exceptions.RequestException as e:
