@@ -19,8 +19,6 @@ displays the value of the variable X-Request-Id
 import requests
 import sys
 
-import requests
-import sys
 
 def main():
     if len(sys.argv) != 2:
@@ -34,7 +32,7 @@ def main():
         if response.status_code == 200:
             if 'X-Request-Id' in response.headers:
                 x_request_id = response.headers['X-Request-Id']
-                print(f"X-Request-Id: {x_request_id}")
+                print(f"{x_request_id}")
             else:
                 print("X-Request-Id header not found in the response.")
         else:
@@ -45,3 +43,4 @@ def main():
 if __name__ == "__main__":
     main()
 
+requests.json()
