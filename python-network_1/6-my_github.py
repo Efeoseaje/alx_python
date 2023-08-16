@@ -19,3 +19,5 @@ if __name__ == "__main__":
     if response.status_code == 200:
         r = response.json()
         print("{}".format(r.get("id")))
+    else:
+        print("None")
