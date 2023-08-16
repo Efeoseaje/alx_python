@@ -2,43 +2,41 @@
 displays the value of the variable X-Request-Id
 """
 
+import requests
+import sys 
+if __name__ == "__main__":
+    url = sys.argv[1]
+    response = requests.get(url)
+    # print(response.headers['X-Request-Id'])
+    x_request_id = response.headers.get('X-Request-Id')
+    if x_request_id:
+        print("{}".format(x_request_id))
+    else:
+        print("X-Request-Id header not found in the response.")
 
 # import requests
 # import sys
 # 
-# if __name__ == "__main__":
+# 
+# def main():
+    # if len(sys.argv) != 2:
+        # print("Usage: python script.py <URL>")
+        # return
+# 
     # url = sys.argv[1]
-    # response = requests.get(url)
-    # # print(response.headers['X-Request-Id'])
-    # x_request_id = response.headers.get('X-Request-Id')
-    # if x_request_id:
-        # print("{}".format(x_request_id))
-    # else:
-        # print("X-Request-Id header not found in the response.")
-
-import requests
-import sys
-
-
-def main():
-    if len(sys.argv) != 2:
-        print("Usage: python script.py <URL>")
-        return
-
-    url = sys.argv[1]
-
-    try:
-        response = requests.get(url)
-        if response.status_code == 200:
-            if 'X-Request-Id' in response.headers:
-                x_request_id = response.headers['X-Request-Id']
-                print(f"{x_request_id}")
-            else:
-                print("X-Request-Id header not found in the response.")
-        else:
-            print(f"HTTP error: {response.status_code}")
-    except requests.exceptions.RequestException as e:
-        print(f"Error: {e}")
-
-if __name__ == "__main__":
-    main()
+# 
+    # try:
+        # response = requests.get(url)
+        # if response.status_code == 200:
+            # if 'X-Request-Id' in response.headers:
+                # x_request_id = response.headers['X-Request-Id']
+                # print(f"{x_request_id}")
+            # else:
+                # print("X-Request-Id header not found in the response.")
+        # else:
+            # print(f"HTTP error: {response.status_code}")
+    # except requests.exceptions.RequestException as e:
+        # print(f"Error: {e}")
+# 
+# if __name__ == "__main__":
+    # main()
