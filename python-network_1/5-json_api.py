@@ -8,11 +8,12 @@ import sys
 
 
 if __name__ == "__main__":
-    letter = ""
     if len(sys.argv) == 1:
         print('No result')
+        letter = ""
         sys.exit(1)
     else:
+        letter = sys.argv[1]
         q = letter
     payload = {'q': letter}
     url = "http://0.0.0.0:5000/search_user"
