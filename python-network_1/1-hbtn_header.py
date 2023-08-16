@@ -9,10 +9,10 @@ if __name__ == "__main__":
     response = requests.get(url)
     # print(response.headers['X-Request-Id'])
     x_request_id = response.headers.get('X-Request-Id')
-    if x_request_id:
-        print("{}".format(x_request_id))
-    else:
-        print("X-Request-Id header not found in the response.")
+    # if x_request_id:
+    print("{}".format(x_request_id))
+    # else:
+        # print("X-Request-Id header not found in the response.")
 
 # import requests
 # import sys
