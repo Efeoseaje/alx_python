@@ -13,7 +13,8 @@ if __name__ == "__main__":
         print('No result')
         sys.exit(1)
     else:
-        payload = {'q': letter}
+        q = letter
+    payload = {'q': letter}
     url = "http://0.0.0.0:5000/search_user"
     response = requests.post(url, data=payload)
     try:
