@@ -20,7 +20,7 @@ if __name__ == "__main__":
     db_cursor = db_connect.cursor()
 
     db_cursor.execute(
-        "SELECT * FROM states WHERE name = '{}' \
+        "SELECT * FROM states WHERE name LIKE BINARY '{}' \
             ORDER BY states.id".format(searched_state))
 
     states = db_cursor.fetchall()
