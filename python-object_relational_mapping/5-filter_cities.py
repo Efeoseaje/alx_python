@@ -26,7 +26,7 @@ if __name__ == "__main__":
         "SELECT cities.name \
         FROM cities \
         INNER JOIN states ON states.id = cities.state_id \
-        WHERE state.name = %s \
+        WHERE states.name = %s \
         ORDER BY cities.id;"
     )
 
