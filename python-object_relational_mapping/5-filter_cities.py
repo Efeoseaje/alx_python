@@ -35,4 +35,4 @@ if __name__ == "__main__":
     cities = db_cursor.fetchall()
 
     for city in cities:
-        print(city)
+        print(city, end=", ")
