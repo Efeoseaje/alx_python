@@ -19,7 +19,9 @@ if __name__ == "__main__":
     db_cursor = db_connect.cursor()
 
     # Execute SQL code
-    db_cursor.execute("SELECT * FROM states WHERE name LIKE %N")
+    db_cursor.execute(
+        "SELECT * FROM states WHERE name LIKE %N \
+            ORDER BY states.id")
 
     # Fetch data from cursor object
     states_with_N = db_cursor.fetchall()
