@@ -1,11 +1,11 @@
 """ script that lists all states from the database hbtn_0e_0_usa """
 
-import MySQLdb
+import MySQLdb as DB
 import sys
 
 if __name__ == "__main__":
     # Create a database connection
-    db_connect = MySQLdb.connect(
+    db_connect = DB.connect(
         host='localhost',
         port=3306,
         user=sys.argv[1],
