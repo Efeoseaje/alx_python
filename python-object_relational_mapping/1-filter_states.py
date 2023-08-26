@@ -20,7 +20,7 @@ if __name__ == "__main__":
 
     # Execute SQL code
     db_cursor.execute(
-        "SELECT * FROM states WHERE name LIKE %N \
+        "SELECT * FROM states WHERE name LIKE N% \
             ORDER BY states.id")
 
     # Fetch data from cursor object
