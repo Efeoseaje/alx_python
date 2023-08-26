@@ -22,7 +22,7 @@ if __name__ == "__main__":
 
     db_cursor = db_connect.cursor()
 
-    query = ("SELECT * FROM states WHERE name LIKE BINARY '%s' \
+    query = ("SELECT * FROM states WHERE name LIKE BINARY %s \
             ORDER BY states.id")
 
     db_cursor.execute(query, (searched_state,))
