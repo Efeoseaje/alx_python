@@ -6,6 +6,9 @@ import MySQLdb as DB
 import sys
 
 if __name__ == "__main__":
+    if len(sys.argv) != 5:
+        sys.exit(1)
+
     # Create a database connection
     db_connect = DB.connect(
         host='localhost',
@@ -19,7 +22,7 @@ if __name__ == "__main__":
 
     db_cursor = db_connect.cursor()
 
-    query = ("SELECT * FROM states WHERE name = '%s' \
+    query = ("SELECT * FROM states WHERE name LIKE BINARY '%s' \
             ORDER BY states.id")
 
     db_cursor.execute(query, (searched_state,))
