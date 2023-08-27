@@ -34,5 +34,5 @@ if __name__ == "__main__":
 
     cities = db_cursor.fetchall()
 
-    city_list = [city for city in cities]
+    city_list = [city[0] for city in cities]
     print(", ".join(city_list))
