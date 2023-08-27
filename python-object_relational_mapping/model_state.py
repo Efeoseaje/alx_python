@@ -10,7 +10,9 @@ Base = declarative_base()
 
 
 class State(Base):
-    """ State Class """"
+    """
+    State Class
+    """
 
     """
     Attributes:
