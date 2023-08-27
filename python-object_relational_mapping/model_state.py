@@ -10,7 +10,8 @@ Base = declarative_base()
 
 
 class State(Base):
-    """
+    """" State Class
+
     Attributes:
             __table__(str): Table name of the class
             id(int): The States id, canot be null and is a primary key
