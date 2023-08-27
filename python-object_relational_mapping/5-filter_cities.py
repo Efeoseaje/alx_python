@@ -34,7 +34,5 @@ if __name__ == "__main__":
 
     cities = db_cursor.fetchall()
 
-    state_cities = list(cities)
-
-    for city in state_cities:
-        print(city, end=", ")
+    city_list = [city for city in cities]
+    print(", ".join(city_list))
