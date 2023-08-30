@@ -17,7 +17,11 @@ def hbnb():
 
 @app.route("/c/<text>", strict_slashes=False)
 def c(text):
-    return f"C {text}"
+    if '_' in text:
+        new_text = text.replace('_', ' ')
+        return f"C {new_text}"
+    else:
+        return f"C {text}"
 
 
 if __name__ == "__main__":
