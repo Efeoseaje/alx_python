@@ -2,36 +2,36 @@ import csv
 import requests
 import sys
 
-if len(sys.argv) != 2:
-    sys.exit(1)
 
-employee_id = int(sys.argv[1])
+def main():
+    user_id = sys.argv[1]
 
-employee_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}"
-todos_url = f"https://jsonplaceholder.typicode.com/users/{employee_id}/todos"
+    # user data
+    user_url = f'https://jsonplaceholder.typicode.com/users/{user_id}'
+    user_response = requests.get(user_url)
+    if user_response.status_code != 200:
+        print(f"User with ID {user_id} not found.")
+        return
+    user_data = user_response.json()
 
-employee_response = requests.get(employee_url)
-todos_response = requests.get(todos_url)
+    #  todos data
+    todos_url = f'https://jsonplaceholder.typicode.com/users/{user_id}/todos'
+    todos_response = requests.get(todos_url)
+    if todos_response.status_code != 200:
+        print(f"Failed to fetch todos for user {user_data['name']}.")
+        return
+    todos_data = todos_response.json()
 
-if employee_response.status_code != 200 or todos_response.status_code != 200:
-    sys.exit(1)
+    # CSV file
+    csv_file = f"{user_id}.csv"
+    with open(csv_file, 'w', newline='') as csvfile:
+        csv_writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
+        for task in todos_data:
+            csv_writer.writerow(
+                [user_id, user_data['username'], task['completed'], task['title']])
 
-employee_data = employee_response.json()
-todo_data = todos_response.json()
-employee_name = employee_data.get("name", "unknown employee")
-employee_username = employee_data.get("username", "unkown employee")
-
-csv_filename = f"{employee_id}.csv"
-
-with open(csv_filename, mode="w", newline="") as csv_file:
-    csv_writer = csv.writer(csv_file)
-
-    csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
-
-for task in todo_data:
-        task_completed_status = "Completed" if task["completed"] else "Not Completed"
-        csv_writer.writerow([employee_id, employee_username, task_completed_status, task["title"]])
+    print(f"Data exported to {csv_file}.")
 
 
-with open(csv_filename, 'r') as f:
-     pass
+if __name__ == "__main__":
+    main()
