@@ -16,7 +16,7 @@ def get_employee_todo_progress(employee_id):
         return
 
     employee_data = employee_response.json()
-    employee_name = employee_data["name"]
+    employee_username = employee_data["username"]
 
     # Fetch employee's TODO list
     todo_url = f"{base_url}/users/{employee_id}/todos"
@@ -35,9 +35,9 @@ def get_employee_todo_progress(employee_id):
         # csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
         for task in todo_data:
             task_completed_status = "True" if task["completed"] else "False"
-            csv_writer.writerow([employee_id, employee_name, task_completed_status, task["title"]])
+            csv_writer.writerow([employee_id, employee_username, task_completed_status, task["title"]])
 
-    print(f"CSV file '{csv_filename}' has been created with TODO list data for employee {employee_name}.")
+    print(f"CSV file '{csv_filename}' has been created with TODO list data for employee {employee_username}.")
 
 
 if __name__ == "__main__":
