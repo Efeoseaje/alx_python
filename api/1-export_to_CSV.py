@@ -23,7 +23,7 @@ def get_employee_todo_progress(employee_id):
     todo_response = requests.get(todo_url)
 
     if todo_response.status_code != 200:
-        print(f"Failed to retrieve TODO list for employee {employee_name}.")
+        print(f"Failed to retrieve TODO list for employee {employee_username}.")
         return
 
     todo_data = todo_response.json()
@@ -36,6 +36,9 @@ def get_employee_todo_progress(employee_id):
         for task in todo_data:
             task_completed_status = "True" if task["completed"] else "False"
             csv_writer.writerow([employee_id, employee_username, task_completed_status, task["title"]])
+
+    with open(csv_filename, 'r') as f:
+        pass
 
     print(f"CSV file '{csv_filename}' has been created with TODO list data for employee {employee_username}.")
 
