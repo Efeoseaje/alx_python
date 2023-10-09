@@ -1,6 +1,3 @@
-#!/usr/bin/python3
-
-
 import csv
 import requests
 import sys
@@ -33,15 +30,21 @@ def get_employee_todo_progress(employee_id):
 
     # Create a CSV file and write the data
     csv_filename = f"{employee_id}.csv"
-    with open(csv_filename, mode='w', newline='') as csv_file:
-        csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+    try:
+        # Attempt to open the file for reading (will create if it doesn't exist)
+        with open(csv_filename, mode='r', newline='') as f:
+            pass
+    except FileNotFoundError:
+        # File does not exist, so create it
+        with open(csv_filename, mode='w', newline='') as csv_file:
+            csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+            csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
 
-        for task in todo_data:
-            task_completed_status = "Completed" if task["completed"] else "Not Completed"
-            csv_writer.writerow([employee_id, employee_name, task_completed_status, task["title"]])
+            for task in todo_data:
+                task_completed_status = "Completed" if task["completed"] else "Not Completed"
+                csv_writer.writerow([employee_id, employee_name, task_completed_status, task["title"]])
 
-    print(f"CSV file '{csv_filename}' has been created with TODO list data for employee {employee_name}.")
+        print(f"CSV file '{csv_filename}' has been created with TODO list data for employee {employee_name}.")
 
 
 if __name__ == "__main__":
