@@ -3,35 +3,54 @@ import requests
 import sys
 
 
-def main():
-    user_id = sys.argv[1]
+def get_employee_todo_progress(employee_id):
+    # Define the base URL for the API
+    base_url = "https://jsonplaceholder.typicode.com"
 
-    # user data
-    user_url = f'https://jsonplaceholder.typicode.com/users/{user_id}'
-    user_response = requests.get(user_url)
-    if user_response.status_code != 200:
-        print(f"User with ID {user_id} not found.")
+    # Fetch employee details
+    employee_url = f"{base_url}/users/{employee_id}"
+    employee_response = requests.get(employee_url)
+
+    if employee_response.status_code != 200:
+        print(f"Failed to retrieve employee details for ID {employee_id}.")
         return
-    user_data = user_response.json()
 
-    #  todos data
-    todos_url = f'https://jsonplaceholder.typicode.com/users/{user_id}/todos'
-    todos_response = requests.get(todos_url)
-    if todos_response.status_code != 200:
-        print(f"Failed to fetch todos for user {user_data['name']}.")
+    employee_data = employee_response.json()
+    employee_username = employee_data["username"]
+
+    # Fetch employee's TODO list
+    todo_url = f"{base_url}/users/{employee_id}/todos"
+    todo_response = requests.get(todo_url)
+
+    if todo_response.status_code != 200:
+        print(f"Failed to retrieve TODO list for employee {employee_username}.")
         return
-    todos_data = todos_response.json()
 
-    # CSV file
-    csv_file = f"{user_id}.csv"
-    with open(csv_file, 'w', newline='') as csvfile:
-        csv_writer = csv.writer(csvfile, quoting=csv.QUOTE_ALL)
-        for task in todos_data:
-            csv_writer.writerow(
-                [user_id, user_data['username'], task['completed'], task['title']])
+    todo_data = todo_response.json()
 
-    print(f"Data exported to {csv_file}.")
+    # Create a CSV file and write the data
+    csv_filename = f"{employee_id}.csv"
+    with open(csv_filename, mode='w', newline='') as csv_file:
+        csv_writer = csv.writer(csv_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_ALL)
+        # csv_writer.writerow(["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"])
+        for task in todo_data:
+            task_completed_status = "True" if task["completed"] else "False"
+            csv_writer.writerow([employee_id, employee_username, task_completed_status, task["title"]])
+
+    with open(csv_filename, 'r') as f:
+        pass
+
+    print(f"CSV file '{csv_filename}' has been created with TODO list data for employee {employee_username}.")
 
 
 if __name__ == "__main__":
-    main()
+    if len(sys.argv) != 2:
+        print("Usage: python script.py <employee_id>")
+        sys.exit(1)
+
+    try:
+        employee_id = int(sys.argv[1])
+        get_employee_todo_progress(employee_id)
+    except ValueError:
+        print("Employee ID must be an integer.")
+        sys.exit(1)
