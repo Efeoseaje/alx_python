@@ -37,14 +37,17 @@ def get_employee_todo_progress(employee_id):
 
     # Export data to JSON format
     json_filename = f"{employee_id}.json"
-    json_data = {"USER_ID": []}
-    for task in todo_data:
-        task_completed_status = True if task["completed"] else False
-        json_data["USER_ID"].append({
-            "task": task["title"],
-            "completed": task_completed_status,
-            "username": employee_username
-        })
+
+    json_data = {
+        employee_id: [
+            {
+                "task": task["title"],
+                "completed": task["completed"],
+                "username": employee_username
+            }
+            for task in todo_data
+        ]
+    }
 
     with open(json_filename, mode='w') as json_file:
         json.dump(json_data, json_file, indent=4)
